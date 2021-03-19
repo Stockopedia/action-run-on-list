@@ -56,7 +56,7 @@ function run() {
 run();
 function promiseExec(command) {
     return new Promise((res, rej) => {
-        child_process_1.exec(command, function (error, stdout, stderr) {
+        child_process_1.exec("echo $FOO", { env: { 'FOO': 'ah' } }, function (error, stdout, stderr) {
             if (error) {
                 return rej();
             }
