@@ -1,8 +1,7 @@
 {
-  "name": "typescript-action",
-  "version": "0.0.0",
+  "name": "@stockopedia/action-run-on-list",
+  "version": "0.0.1",
   "private": true,
-  "description": "TypeScript template action",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",

@@ -19,6 +19,6 @@ jobs:
           npm run all
       - uses: ./
         with:
-          list: '["one", "two", "four"]'
+          list: '["one", "two", "three"]'
           command: |
             echo $item 
