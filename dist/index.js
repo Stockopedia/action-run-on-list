@@ -54,15 +54,17 @@ function run() {
     });
 }
 run();
-const promiseExec = (command) => new Promise((res, rej) => {
-    child_process_1.exec(command, function (error, stdout, stderr) {
-        if (error) {
-            return rej();
-        }
-        console.log(stdout);
-        return res();
+function promiseExec(command) {
+    return new Promise((res, rej) => {
+        child_process_1.exec(command, function (error, stdout, stderr) {
+            if (error) {
+                return rej();
+            }
+            console.log(stdout);
+            return res();
+        });
     });
-});
+}
 
 
 /***/ }),

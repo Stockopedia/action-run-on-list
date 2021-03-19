@@ -18,13 +18,15 @@ async function run(): Promise<void> {
 
 run()
 
-const promiseExec = (command: string) => new Promise<void>((res, rej) => {
-  exec(command,  function(error, stdout, stderr) {
-    if(error) {
-      return rej()
-    }
-    console.log(stdout);
-
-    return res()
-  });
-})
+function promiseExec(command: string) {
+  return new Promise<void>((res, rej) => {
+    exec(command,  function(error, stdout, stderr) {
+      if(error) {
+        return rej()
+      }
+      console.log(stdout);
+  
+      return res()
+    });
+  })
+} 
