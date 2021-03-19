@@ -7,8 +7,8 @@ async function run(): Promise<void> {
     const inputCommand: string = core.getInput('command')
     const list = JSON.parse(inputList)
     
-    for (const _ of list) {
-      await exec.exec(`${inputCommand}`);
+    for (const item of list) {
+      await exec.exec(`ITEM=${item}; ${inputCommand}`);
     }
 
   } catch (error) {

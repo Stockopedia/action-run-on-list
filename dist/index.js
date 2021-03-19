@@ -44,8 +44,8 @@ function run() {
             const inputList = core.getInput('list');
             const inputCommand = core.getInput('command');
             const list = JSON.parse(inputList);
-            for (const _ of list) {
-                yield exec.exec(`${inputCommand}`);
+            for (const item of list) {
+                yield exec.exec(`ITEM=${item}; ${inputCommand}`);
             }
         }
         catch (error) {
