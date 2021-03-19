@@ -42,10 +42,9 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const inputList = core.getInput('list');
-            const inputCommand = core.getInput('command');
             const list = JSON.parse(inputList);
             for (const item of list) {
-                yield exec.exec(`echo $ITEM`, [], { env: { "ITEM": item } });
+                yield exec.exec(`echo $FOO`, undefined, { env: { "FOO": item } });
             }
         }
         catch (error) {

@@ -4,11 +4,10 @@ import * as exec from '@actions/exec'
 async function run(): Promise<void> {
   try {
     const inputList: string = core.getInput('list')
-    const inputCommand: string = core.getInput('command')
     const list = JSON.parse(inputList)
     
     for (const item of list) {
-      await exec.exec(`echo $ITEM`, [], { env: { "ITEM": item}});
+      await exec.exec(`echo $FOO`, undefined, { env: { "FOO": item }});
     }
 
   } catch (error) {
