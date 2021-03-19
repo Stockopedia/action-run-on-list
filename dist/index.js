@@ -45,7 +45,7 @@ function run() {
             const list = JSON.parse(inputList);
             const inputCommand = core.getInput('command');
             for (const item of list) {
-                promiseExec(`${inputCommand}`);
+                promiseExec(`${inputCommand}`, { item });
             }
         }
         catch (error) {
@@ -54,9 +54,9 @@ function run() {
     });
 }
 run();
-function promiseExec(command) {
+function promiseExec(command, env) {
     return new Promise((res, rej) => {
-        child_process_1.exec("echo $FOO", { env: { 'FOO': 'ah' } }, function (error, stdout, stderr) {
+        child_process_1.exec(command, { env }, function (error, stdout, stderr) {
             if (error) {
                 return rej();
             }
