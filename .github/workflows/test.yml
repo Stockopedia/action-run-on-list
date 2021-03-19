@@ -24,4 +24,4 @@ jobs:
         with:
           list: '["one", "two", "thee"]'
           command: |
-            echo $1
+            echo $ITEM
