@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import * as exec from '@actions/exec'
+import { exec } from 'child_process'
 
 async function run(): Promise<void> {
   try {
@@ -8,7 +8,7 @@ async function run(): Promise<void> {
     const inputCommand: string = core.getInput('command')
 
     for (const item of list) {
-      await exec.exec(`echo ${item} | ${inputCommand}`);
+      promiseExec(`${inputCommand}`);
     }
 
   } catch (error) {
@@ -17,3 +17,14 @@ async function run(): Promise<void> {
 }
 
 run()
+
+const promiseExec = (command: string) => new Promise<void>((res, rej) => {
+  exec(command,  function(error, stdout, stderr) {
+    if(error) {
+      return rej()
+    }
+    console.log(stdout);
+
+    return res()
+  });
+})
