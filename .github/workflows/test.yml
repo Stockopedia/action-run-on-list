@@ -1,6 +1,8 @@
 name: 'build-test'
 on: # rebuild any PRs and main branch changes
   pull_request:
+    paths:
+      - bla
   push:
     branches:
       - main
@@ -23,4 +25,4 @@ jobs:
       - uses: ./
         with:
           list: '["one", "two", "thee"]'
-          command: echo $ITEM
+          command: echo

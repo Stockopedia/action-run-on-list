@@ -5,9 +5,10 @@ async function run(): Promise<void> {
   try {
     const inputList: string = core.getInput('list')
     const list = JSON.parse(inputList)
-    
+    const inputCommand: string = core.getInput('command')
+
     for (const item of list) {
-      await exec.exec(`echo $FOO`, undefined, { env: { "FOO": item }});
+      await exec.exec(`echo ${item} | ${inputCommand}`);
     }
 
   } catch (error) {

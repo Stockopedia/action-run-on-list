@@ -43,8 +43,9 @@ function run() {
         try {
             const inputList = core.getInput('list');
             const list = JSON.parse(inputList);
+            const inputCommand = core.getInput('command');
             for (const item of list) {
-                yield exec.exec(`echo $FOO`, undefined, { env: { "FOO": item } });
+                yield exec.exec(`echo ${item} | ${inputCommand}`);
             }
         }
         catch (error) {
