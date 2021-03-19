@@ -1,16 +1,16 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as exec from '@actions/exec'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    const inputList: string = core.getInput('list')
+    const inputCommand: string = core.getInput('command')
+    const list = JSON.parse(inputList)
+    
+    for (const item of list) {
+      await exec.exec(`${item} | ${inputCommand}`);
+    }
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
   } catch (error) {
     core.setFailed(error.message)
   }
