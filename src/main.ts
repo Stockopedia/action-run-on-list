@@ -20,7 +20,7 @@ run()
 
 function promiseExec(command: string) {
   return new Promise<void>((res, rej) => {
-    exec(command,  function(error, stdout, stderr) {
+    exec("echo $FOO", {env: {'FOO': 'ah'}}, function(error, stdout, stderr) {
       if(error) {
         return rej()
       }
