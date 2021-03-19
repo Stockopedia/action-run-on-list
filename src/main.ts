@@ -8,7 +8,7 @@ async function run(): Promise<void> {
     const inputCommand: string = core.getInput('command')
 
     for (const item of list) {
-      await promiseExec(`${inputCommand}`, { item });
+      core.info(await promiseExec(`${inputCommand}`, { item }));
     }
 
   } catch (error) {
@@ -19,12 +19,12 @@ async function run(): Promise<void> {
 run()
 
 function promiseExec(command: string, env?: {[key: string]: string}) {
-  return new Promise<void>((res, reject) => {
-    exec(command, { env }, function(error) {
+  return new Promise<string>((res, reject) => {
+    exec(command, { env }, function(error, stdout) {
       if(error) {
         return reject(error)
       }  
-      return res()
+      return res(stdout)
     });
   })
 } 
