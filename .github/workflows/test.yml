@@ -25,4 +25,5 @@ jobs:
       - uses: ./
         with:
           list: '["one", "two", "thee"]'
-          command: echo $item
+          command: |
+            echo $item 
