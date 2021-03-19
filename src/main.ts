@@ -8,7 +8,7 @@ async function run(): Promise<void> {
     const list = JSON.parse(inputList)
     
     for (const item of list) {
-      await exec.exec(`${item} | ${inputCommand}`);
+      await exec.exec("echo yoooo");
     }
 
   } catch (error) {
