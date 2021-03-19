@@ -18,7 +18,7 @@ async function run(): Promise<void> {
 
 run()
 
-function promiseExec(command: string, env?: {[key: string]: string}) {
+function promiseExec(command: string, env?: {[key: string]: string}): Promise<string> {
   return new Promise<string>((res, reject) => {
     exec(command, { env }, function(error, stdout) {
       if(error) {
