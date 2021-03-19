@@ -45,7 +45,7 @@ function run() {
             const list = JSON.parse(inputList);
             const inputCommand = core.getInput('command');
             for (const item of list) {
-                promiseExec(`${inputCommand}`, { item });
+                yield promiseExec(`${inputCommand}`, { item });
             }
         }
         catch (error) {
@@ -55,12 +55,11 @@ function run() {
 }
 run();
 function promiseExec(command, env) {
-    return new Promise((res, rej) => {
-        child_process_1.exec(command, { env }, function (error, stdout, stderr) {
+    return new Promise((res, reject) => {
+        child_process_1.exec(command, { env }, function (error) {
             if (error) {
-                return rej();
+                return reject(error);
             }
-            console.log(stdout);
             return res();
         });
     });
