@@ -41,12 +41,12 @@ const exec = __importStar(__webpack_require__(514));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const inputList = core.getInput('list');
-            const inputCommand = core.getInput('command');
-            const list = JSON.parse(inputList);
-            for (const item of list) {
-                yield exec.exec("echo yoooo");
-            }
+            // const inputList: string = core.getInput('list')
+            // const inputCommand: string = core.getInput('command')
+            // const list = JSON.parse(inputList)
+            // for (const item of list) {
+            yield exec.exec("echo yoooo");
+            // }
         }
         catch (error) {
             core.setFailed(error.message);

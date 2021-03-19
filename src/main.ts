@@ -3,13 +3,13 @@ import * as exec from '@actions/exec'
 
 async function run(): Promise<void> {
   try {
-    const inputList: string = core.getInput('list')
-    const inputCommand: string = core.getInput('command')
-    const list = JSON.parse(inputList)
+    // const inputList: string = core.getInput('list')
+    // const inputCommand: string = core.getInput('command')
+    // const list = JSON.parse(inputList)
     
-    for (const item of list) {
+    // for (const item of list) {
       await exec.exec("echo yoooo");
-    }
+    // }
 
   } catch (error) {
     core.setFailed(error.message)
